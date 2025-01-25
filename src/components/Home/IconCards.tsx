@@ -55,8 +55,8 @@ const IconCard: React.FC<CardProp> = ({ title, subtitle, content }) => {
 const IconCards: React.FC<Props> = ({ data }) => {
   return (
     <StyledCardContainer>
-      {data.map((d: any) => {
-        return <IconCard {...d.node.homeBanner} />;
+      {data.map((d: any, i: number) => {
+        return <IconCard {...d.node.homeBanner} key={i} />;
       })}
     </StyledCardContainer>
   );

@@ -4,7 +4,38 @@ import Layout from "../layouts/HomeLayout";
 import Slider from "../components/Home/Slider";
 import IconCards from "../components/Home/IconCards";
 import WelcomeToChurch from "../components/Home/WelcomeToChurch";
+import Events, { EventDataType } from "../components/Home/Events";
 import { WELCOME_TO_CHURCH_SECTION } from "../constants/sectionIds";
+
+const cleanWTC = (data: any) => {
+  let welcomeToChurch = data.findLast((e: any) => {
+    return e.node.homeSection.id === WELCOME_TO_CHURCH_SECTION;
+  });
+
+  welcomeToChurch = welcomeToChurch.node.homeSection;
+
+  return welcomeToChurch;
+};
+
+const cleanEvents = (data: any) => {
+  const d: any[] = [];
+  data.forEach((j: any, i: number) => {
+    const t: EventDataType = {
+      title: j.node.events.eventTitle,
+      id: String(i),
+      description: j.node.events.description,
+      host: j.node.events.speakerHost,
+      date: j.node.events.date,
+      startTime: j.node.events.startTime,
+      endTime: j.node.events.endTime,
+      image: j.node.events.image,
+      status: j.node.events.status,
+      contactInformation: j.node.events.contactInformation || "",
+    };
+    d.push(t);
+  });
+  return d;
+};
 
 const IndexPage: React.FC<PageProps> = ({ data }) => {
   /* NOTE: Actually exists */
@@ -12,18 +43,14 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
   const sliders = data.allWpSlider.nodes;
   const iconCards = data.allWpIconcard.edges;
   const sections = data.allWpSection.edges as any[];
-
-  let welcomeToChurch = sections.find((e) => {
-    return (e.node.homeSection.id = WELCOME_TO_CHURCH_SECTION);
-  });
-
-  welcomeToChurch = welcomeToChurch.node.homeSection;
+  const events = data.allWpEvent.edges as any[];
 
   return (
     <Layout>
       <Slider />
       <IconCards data={iconCards} />
-      <WelcomeToChurch {...welcomeToChurch} />
+      <WelcomeToChurch {...cleanWTC(sections)} />
+      <Events data={cleanEvents(events)} />
     </Layout>
   );
 };
@@ -51,7 +78,7 @@ export const pageQuery = graphql`
     allWpIconcard {
       edges {
         node {
-          title
+          id
           homeBanner {
             title
             subtitle
@@ -78,6 +105,28 @@ export const pageQuery = graphql`
                 }
               }
             }
+          }
+        }
+      }
+    }
+    allWpEvent {
+      edges {
+        node {
+          events {
+            eventTitle
+            description
+            speakerhost
+            date
+            startTime
+            endTime
+            eventType
+            image {
+              node {
+                id
+              }
+            }
+            status
+            contactInformation
           }
         }
       }

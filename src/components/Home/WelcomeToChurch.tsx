@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { HeadingThree, Paragraph, SubHeading } from "../shared/Text";
+import { BlueHeading, Paragraph, SubHeading } from "../shared/Text";
 import { pagePadding } from "../../constants/css";
 
 type Props = {
@@ -20,7 +20,7 @@ const StyledLeftSide = styled.div``;
 
 const StyledRightSide = styled.div``;
 
-const StyledHeading = styled(HeadingThree)`
+const StyledHeading = styled(BlueHeading)`
   padding-bottom: 12px;
 `;
 
