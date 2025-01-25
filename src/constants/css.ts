@@ -1,0 +1,7 @@
+/* PADDING, MARGIN AND ALL SPACINGS */
+// PAGE PADDING IS INTENTIONALLY NOT GIVEN IN (PX)
+// THIS IS SO THAT IT CAN BE CALCULATED
+export const pagePadding = 84;
+
+/* TEXT SIZES */
+export const h3 = "1.4rem";
