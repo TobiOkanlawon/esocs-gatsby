@@ -4,8 +4,13 @@ import Layout from "../layouts/HomeLayout";
 import Slider from "../components/Home/Slider";
 import IconCards from "../components/Home/IconCards";
 import WelcomeToChurch from "../components/Home/WelcomeToChurch";
+import Watchword from "../components/Home/Watchword";
+import News from "../components/Home/News";
 import Events, { EventDataType } from "../components/Home/Events";
-import { WELCOME_TO_CHURCH_SECTION } from "../constants/sectionIds";
+import {
+  WELCOME_TO_CHURCH_SECTION,
+  OUR_WATCHWORD_SECTION,
+} from "../constants/sectionIds";
 
 const cleanWTC = (data: any) => {
   let welcomeToChurch = data.findLast((e: any) => {
@@ -37,6 +42,16 @@ const cleanEvents = (data: any) => {
   return d;
 };
 
+const cleanWatchword = (data: any) => {
+  let watchword = data.findLast((e: any) => {
+    console.log(e);
+    return e.node.homeSection.id === OUR_WATCHWORD_SECTION;
+  });
+
+  watchword = watchword.node.homeSection;
+  return watchword;
+};
+
 const IndexPage: React.FC<PageProps> = ({ data }) => {
   /* NOTE: Actually exists */
   // TODO: Do the one for sliders;
@@ -51,6 +66,8 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
       <IconCards data={iconCards} />
       <WelcomeToChurch {...cleanWTC(sections)} />
       <Events data={cleanEvents(events)} />
+      <Watchword {...cleanWatchword(sections)} />
+      <News data={[]} />
     </Layout>
   );
 };
