@@ -9,6 +9,7 @@ const StyledHeader = styled.header`
   width: 100vw;
   position: absolute;
   background-color: transparent;
+  z-index: 2;
 `;
 
 const Header = () => {
