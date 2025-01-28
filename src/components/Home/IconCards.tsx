@@ -21,8 +21,12 @@ const StyledCardContainer = styled.div`
 `;
 
 const StyledCard = styled.div`
-  height: 178px;
+  border: 1px solid rebeccapurple;
+  min-height: 200px;
+  height: 246px;
+  padding: 48px 34px;
   min-width: 244px;
+  width: 308px;
 `;
 
 const StyledCardTitle = styled.h2`
