@@ -8,12 +8,12 @@ type Props = {
 };
 
 const StyledContainer = styled.div`
-  padding: 48px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 12px;
+  margin-bottom: 48px;
 `;
 
 const CenterAlignedContainer: React.FC<Props> = ({ title, subTitle }) => {
