@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { pagePadding, h3 } from "../../constants/css";
-import { grayTextColor, primaryBlue, primaryRed } from "../../constants/colors";
+import { pagePadding } from "../../constants/css";
+import { BlueHeading, Paragraph, SubHeading } from "../shared/Text";
 
 type Props = {
   data: any;
@@ -14,43 +14,37 @@ type CardProp = {
 };
 
 const StyledCardContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   padding: 0px ${pagePadding}px;
+  align-items: center;
+  gap: 24px;
   background-color: white;
 `;
 
 const StyledCard = styled.div`
-  border: 1px solid rebeccapurple;
   min-height: 200px;
   height: 246px;
   padding: 48px 34px;
   min-width: 244px;
   width: 308px;
+  flex-shrink: 1;
 `;
 
-const StyledCardTitle = styled.h2`
-  color: ${primaryBlue};
-  font-size: ${h3};
-  font-family: "Libre Baskerville", serif;
-  padding-bottom: 12px;
+const StyledBlueHeading = styled(BlueHeading)`
+  margin-bottom: 12px;
 `;
 
-const StyledSubtitle = styled.p`
-  color: ${primaryRed};
-`;
-
-const StyledContent = styled.p`
-  color: ${grayTextColor};
-  font-family: "Raleway", sans-serif;
+const StyledContent = styled(Paragraph)`
   padding: 24px 0px;
 `;
 
 const IconCard: React.FC<CardProp> = ({ title, subtitle, content }) => {
   return (
     <StyledCard>
-      <StyledCardTitle>{title}</StyledCardTitle>
-      <StyledSubtitle>{subtitle}</StyledSubtitle>
+      <StyledBlueHeading>{title}</StyledBlueHeading>
+      <SubHeading>{subtitle}</SubHeading>
       <StyledContent>{content}</StyledContent>
     </StyledCard>
   );
