@@ -17,7 +17,9 @@ type StyledButtonProps = {
 const StyledButton = styled.button<StyledButtonProps>`
   background-color: #0092e7;
   ${(props) =>
-    props.$size == "lg" ? "padding: 18px 48px;" : "padding: 12px 24px;"}
+    props.$size == "lg" ? "padding: 18px 48px;" : "padding: 18px 24px;"}
+  ${(props) => props.$size == "md" && "width: 240px"};
+  ${(props) => props.$size == "sm" && "width: 120px"};
   color: white;
   border: 0px;
   font-size: 18px;
