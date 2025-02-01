@@ -1,7 +1,6 @@
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-
-import BackgroundImage from "gatsby-background-image";
 
 type SliderType = any;
 
@@ -15,34 +14,48 @@ type SliderTrackerButtonProps = {
   setActiveIndex: (index: number) => void;
 };
 
-const StyledBackgroundImage = styled(BackgroundImage)`
-  width: 100vw;
-  max-width: 100vw;
-  min-height: 90vh;
-  height: 640px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: inset 0 0 0 2000px rgba(22, 21, 21, 0.3);
-`;
-
 const StyledContainer = styled.section`
+  height: 90vh;
+  min-height: 90vh;
+  max-height: 90vh;
+  min-width: 100vw;
   overflow: hidden;
   margin-bottom: 24px;
 `;
 
 const StyledSliderContainer = styled.ul`
-  list-style: none;
-  overflow: hidden;
+  position: relative;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 100%; /* Adjust height */
+  box-shadow: inset 0 0 0 2000px rgba(22, 21, 21, 0.4);
+
+  .background-image {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100vw;
+    z-index: -1; /* Push behind content */
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+  }
 `;
 
 const StyledSliderTrackerButtonContainer = styled.div`
   display: flex;
   justify-content: center;
+  position: absolute;
   z-index: 5;
 `;
 
@@ -107,19 +120,26 @@ const Slider: React.FC<Props> = ({ data }) => {
         {data.map((s, i) => {
           // this is what makes it slide
           if (i !== imageIndex) return <></>;
+          const img = getImage(s.sliders.sliderImage.node.localFile);
+          console.log("IMG: ", img);
           return (
-            <StyledBackgroundImage
-              Tag="li"
-              fluid={s.sliders.sliderImage.node.localFile.childImageSharp.fluid}
+            <GatsbyImage
+              alt="Alt for now"
+              className="background-image"
+              image={img!}
             />
           );
         })}
       </StyledSliderContainer>
-      <SliderTrackerButtons
-        number={data.length}
-        activeIndex={imageIndex}
-        setActiveIndex={setActiveImage}
-      />
+      {false && (
+        <div className="">
+          <SliderTrackerButtons
+            number={data.length}
+            activeIndex={imageIndex}
+            setActiveIndex={setActiveImage}
+          />
+        </div>
+      )}
     </StyledContainer>
   );
 };

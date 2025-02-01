@@ -12,6 +12,7 @@ const BackgroundWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   padding: 48px;
   width: 100%;
   height: 400px; /* Adjust height */
