@@ -11,12 +11,29 @@ line-height: 30px;
 type TextProps = {
   color?: string;
   size?: string;
-} & Props;
+} & Props &
+  (
+    | React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLHeadingElement>,
+        HTMLHeadingElement
+      >
+    | React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLParagraphElement>,
+        HTMLParagraphElement
+      >
+  );
 
 type STextProps = {
   $color?: string;
   $size?: string;
 };
+
+const StyledHeadingOne = styled.h1<STextProps>`
+  line-height: 60px;
+  font-family: "Libre Baskerville", serif;
+  color: ${(props) => props.$color || "white"};
+  font-size: 4em;
+`;
 
 const StyledBlueHeading = styled.h3<STextProps>`
   ${defaultTextStyles}
@@ -47,7 +64,20 @@ const StyledHeadingFour = styled.h4<STextProps>`
   color: ${(props) => props.$color || primaryBlue};
 `;
 
-const StyledSmallText = styled.small``;
+const StyledSmallText = styled.small<STextProps>``;
+
+export const HeadingOne: React.FC<TextProps & { children?: string }> = ({
+  children,
+  color,
+  size,
+  ...rest
+}) => {
+  return (
+    <StyledHeadingOne $color={color} $size={size} {...rest}>
+      {children}
+    </StyledHeadingOne>
+  );
+};
 
 export const BlueHeading: React.FC<TextProps> = ({
   children,

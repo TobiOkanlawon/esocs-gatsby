@@ -1,6 +1,8 @@
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import Button from "../shared/Button";
+import { BlueHeading, HeadingOne } from "../shared/Text";
 
 type SliderType = any;
 
@@ -69,6 +71,20 @@ const StyledSliderTrackerButton = styled.button<{ $active: boolean }>`
   fill: ${(props) => (props.$active ? "white" : "transparent")};
 `;
 
+const StyledDescriptionContainer = styled.div`
+  width: 60%;
+  text-align: center;
+  color: white;
+  margin-bottom: 14px;
+`;
+
+const StyledInnerContainer = styled.div``;
+
+const StyledHeadingOne = styled(HeadingOne)`
+  text-align: center;
+  margin-bottom: 14px;
+`;
+
 const SliderTrackerButtons: React.FC<SliderTrackerButtonProps> = ({
   number,
   activeIndex,
@@ -107,8 +123,6 @@ const Slider: React.FC<Props> = ({ data }) => {
     const timeout = setTimeout(() => {
       counter.current = counter.current + 1;
       setActiveImage(counter.current);
-      console.log("IMG IND:", imageIndex);
-      console.log("COUNTER: ", counter);
     }, 3000);
 
     return () => clearTimeout(timeout);
@@ -121,12 +135,34 @@ const Slider: React.FC<Props> = ({ data }) => {
           // this is what makes it slide
           if (i !== imageIndex) return <></>;
           const img = getImage(s.sliders.sliderImage.node.localFile);
+          console.log("S: ", s);
           return (
-            <GatsbyImage
-              alt="Alt for now"
-              className="background-image"
-              image={img!}
-            />
+            <>
+              <GatsbyImage
+                alt="Alt for now"
+                className="background-image"
+                image={img!}
+              />
+              <div>
+                <StyledHeadingOne
+                  dangerouslySetInnerHTML={{ __html: s.sliders.sliderTitle }}
+                  color="white"
+                />
+              </div>
+              <StyledDescriptionContainer>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: s.sliders.sliderCaption,
+                  }}
+                />
+              </StyledDescriptionContainer>
+              <Button
+                logoPosition="right"
+                type="primary"
+                size="lg"
+                title={s.sliders.buttonText}
+              />
+            </>
           );
         })}
       </StyledSliderContainer>
