@@ -57,7 +57,6 @@ const config: GatsbyConfig = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-styled-components",
     "gatsby-plugin-sitemap",
-    "gatsby-plugin-fontawesome-css",
     {
       resolve: "gatsby-source-filesystem",
       options: {

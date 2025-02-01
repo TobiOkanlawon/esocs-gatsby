@@ -1,23 +1,53 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "../shared/Button";
-import BackgroundImage from "gatsby-background-image";
-import { getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { useStaticQuery, graphql } from "gatsby";
-import { convertToBgImage } from "gbimage-bridge";
 import { OUR_WATCHWORD_SECTION } from "../../constants/sectionIds";
+import { BlueHeading, Paragraph } from "../shared/Text";
 
-const StyledBackgroundImage = styled(BackgroundImage)`
+const BackgroundWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 48px;
+  width: 100%;
+  height: 400px; /* Adjust height */
+  overflow: hidden;
+
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Push behind content */
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    padding: 100px;
+  }
 `;
 
-const StyledContent = styled.p``;
+const StyledContent = styled(Paragraph)`
+  font-size: 2em;
+  font-weight: bold;
+  width: 55%;
+  text-align: center;
+  color: white;
+  margin: 12px 0px;
+`;
 
-const StyledHeading = styled.h2``;
+const StyledHeading = styled(BlueHeading)`
+  color: white;
+  font-size: 1.2em;
+`;
 
 const cleanWatchword = (data: any) => {
   let watchword = data.allWpSection.edges.findLast((e: any) => {
@@ -58,10 +88,10 @@ const WatchWord: React.FC = () => {
 
   const d = cleanWatchword(data);
   const img = getImage(d.image.node.localFile);
-  const bgImage = convertToBgImage(img);
 
   return (
-    <StyledBackgroundImage Tag="section" {...bgImage}>
+    <BackgroundWrapper>
+      <GatsbyImage image={img!} className="background-image" />
       <StyledHeading>{d.title}</StyledHeading>
       <StyledContent>{d.content}</StyledContent>
       <Button
@@ -70,7 +100,7 @@ const WatchWord: React.FC = () => {
         title="Learn more about us"
         size="md"
       />
-    </StyledBackgroundImage>
+    </BackgroundWrapper>
   );
 };
 
