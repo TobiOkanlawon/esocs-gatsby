@@ -5,6 +5,8 @@ import { BlueHeading, SubHeading } from "./Text";
 type Props = {
   title: string;
   subTitle: string;
+  titleColor?: string;
+  subTitleColor?: string;
 };
 
 const StyledContainer = styled.div`
@@ -16,11 +18,16 @@ const StyledContainer = styled.div`
   margin-bottom: 48px;
 `;
 
-const CenterAlignedContainer: React.FC<Props> = ({ title, subTitle }) => {
+const CenterAlignedContainer: React.FC<Props> = ({
+  title,
+  subTitle,
+  titleColor,
+  subTitleColor,
+}) => {
   return (
     <StyledContainer>
-      <BlueHeading>{title}</BlueHeading>
-      <SubHeading>{subTitle}</SubHeading>
+      <BlueHeading color={titleColor}>{title}</BlueHeading>
+      <SubHeading color={subTitleColor}>{subTitle}</SubHeading>
     </StyledContainer>
   );
 };

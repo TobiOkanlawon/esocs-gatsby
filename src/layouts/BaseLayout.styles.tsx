@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledBaseLayoutContainer = styled.div`
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: 1fr auto;
   grid-template-columns: 1fr;
   grid-template-areas:
     "header"

@@ -43,7 +43,6 @@ const config: GatsbyConfig = {
           formats: ["auto", "webp"],
           placeholder: "dominantColor",
           quality: 50,
-          breakPoints: [750, 1080, 1366, 1920],
           backgroundColor: "transparent",
           tracedSVGOptions: {},
           blurredOptions: {},
@@ -58,6 +57,7 @@ const config: GatsbyConfig = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-styled-components",
     "gatsby-plugin-sitemap",
+    "gatsby-plugin-fontawesome-css",
     {
       resolve: "gatsby-source-filesystem",
       options: {

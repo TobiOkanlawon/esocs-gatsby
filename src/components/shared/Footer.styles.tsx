@@ -7,7 +7,6 @@ export const StyledFooter = styled.footer`
   display: flex;
   justify-content: space-between;
   padding: 48px 54px;
-  margin-top: 48px;
   min-height: 720px;
   max-height: 1024px;
 `;

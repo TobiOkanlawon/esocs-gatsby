@@ -5,14 +5,14 @@ import Slider from "../components/Home/Slider";
 import IconCards from "../components/Home/IconCards";
 import WelcomeToChurch from "../components/Home/WelcomeToChurch";
 import Watchword from "../components/Home/Watchword";
+import SowingSeeds from "../components/Home/SowingSeeds";
+import WatchAndListenAgain from "../components/Home/WatchAndListenAgain";
 import News from "../components/Home/News";
 import Events, { EventDataType } from "../components/Home/Events";
-import {
-  WELCOME_TO_CHURCH_SECTION,
-  OUR_WATCHWORD_SECTION,
-} from "../constants/sectionIds";
+import { WELCOME_TO_CHURCH_SECTION } from "../constants/sectionIds";
 
 const cleanWTC = (data: any) => {
+  console.log("WTC: ", data);
   let welcomeToChurch = data.findLast((e: any) => {
     return e.node.homeSection.id === WELCOME_TO_CHURCH_SECTION;
   });
@@ -42,32 +42,24 @@ const cleanEvents = (data: any) => {
   return d;
 };
 
-const cleanWatchword = (data: any) => {
-  let watchword = data.findLast((e: any) => {
-    console.log(e);
-    return e.node.homeSection.id === OUR_WATCHWORD_SECTION;
-  });
-
-  watchword = watchword.node.homeSection;
-  return watchword;
-};
-
 const IndexPage: React.FC<PageProps> = ({ data }) => {
-  /* NOTE: Actually exists */
-  // TODO: Do the one for sliders;
   const sliders = data.allWpSlider.nodes;
   const iconCards = data.allWpIconcard.edges;
   const sections = data.allWpSection.edges as any[];
   const events = data.allWpEvent.edges as any[];
 
+  const wtc = cleanWTC(sections);
+
   return (
     <Layout>
-      <Slider />
+      <Slider data={sliders} />
       <IconCards data={iconCards} />
-      <WelcomeToChurch {...cleanWTC(sections)} />
+      <WelcomeToChurch {...wtc} image={wtc.image} />
       <Events data={cleanEvents(events)} />
-      <Watchword {...cleanWatchword(sections)} />
-      <News data={[]} />
+      <Watchword />
+      {false && <News data={[]} />}
+      <SowingSeeds />
+      <WatchAndListenAgain />
     </Layout>
   );
 };
@@ -82,9 +74,13 @@ export const pageQuery = graphql`
           buttonText
           sliderImage {
             node {
-              mediaItemUrl
-              altText
-              srcSet
+              localFile {
+                childImageSharp {
+                  fluid(quality: 90, maxWidth: 1024) {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
+              }
             }
           }
           sliderTitle
@@ -92,7 +88,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allWpIconcard {
+    allWpIconcard(limit: 3) {
       edges {
         node {
           id
@@ -117,7 +113,11 @@ export const pageQuery = graphql`
                 id
                 localFile {
                   childImageSharp {
-                    id
+                    gatsbyImageData(
+                      width: 532
+                      placeholder: BLURRED
+                      formats: [AUTO, WEBP, AVIF]
+                    )
                   }
                 }
               }
@@ -126,7 +126,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allWpEvent {
+    allWpEvent(limit: 2) {
       edges {
         node {
           events {
@@ -140,10 +140,25 @@ export const pageQuery = graphql`
             image {
               node {
                 id
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(width: 540, height: 200)
+                  }
+                }
               }
             }
             status
             contactInformation
+          }
+        }
+      }
+    }
+    allWpNews {
+      edges {
+        node {
+          news {
+            title
+            date
           }
         }
       }

@@ -1,7 +1,7 @@
 import React from "react";
 import CenterAlignedContainer from "../shared/CenterAlignedContainer";
 import styled from "styled-components";
-import { pagePadding } from "../../constants/css";
+import { StyledSectionContainer, pagePadding } from "../../constants/css";
 import Button from "../shared/Button";
 
 type CardProps = {
@@ -11,10 +11,6 @@ type CardProps = {
   image: any;
 };
 
-const StyledContainer = styled.div`
-  padding: ${pagePadding};
-`;
-
 const StyledNewsContainer = styled.div`
   display: flex;
 `;
@@ -23,21 +19,31 @@ const NewsCard: React.FC<CardProps> = ({ id, title, subtitle, image }) => {
   return <div></div>;
 };
 
-const News = () => {
+const NewsContainer = ({ data }) => {
   return (
-    <StyledContainer>
+    <StyledNewsContainer>
+      {data.map((n: any) => {
+        return <NewsCard title={n.title} />;
+      })}
+    </StyledNewsContainer>
+  );
+};
+
+const News: React.FC<NewsProps> = ({ data }) => {
+  return (
+    <StyledSectionContainer>
       <CenterAlignedContainer
         title="Latest News"
         subTitle="Explore inspiring stories, faith-filled insights and the latest updates in our news and blog section"
       />
-      <StyledNewsContainer />
+
       <Button
         title="View more news"
         type="primary"
         size="md"
         logoPosition="right"
       />
-    </StyledContainer>
+    </StyledSectionContainer>
   );
 };
 

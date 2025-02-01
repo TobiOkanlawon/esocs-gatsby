@@ -1,51 +1,115 @@
 import React from "react";
 import styled from "styled-components";
 import { grayTextColor, primaryBlue, primaryRed } from "../../constants/colors";
-import { h3 } from "../../constants/css";
 
 type Props = { children: React.ReactNode };
+
+const defaultTextStyles = `
+line-height: 30px;
+`;
 
 type TextProps = {
   color?: string;
   size?: string;
 } & Props;
 
-const StyledBlueHeading = styled.h3<{ $color?: string }>`
-  font-family: "Raleway", sans-serif;
+type STextProps = {
+  $color?: string;
+  $size?: string;
+};
+
+const StyledBlueHeading = styled.h3<STextProps>`
+  ${defaultTextStyles}
+  font-family: "Libre Baskerville", serif;
   color: ${(props) => props.$color || primaryBlue};
   font-size: 1.8em;
 `;
 
-const StyledParagraph = styled.p`
+const StyledParagraph = styled.p<STextProps>`
+  ${defaultTextStyles}
   font-family: "Raleway", sans-serif;
-  color: ${grayTextColor};
+  color: ${(props) => props.$color || grayTextColor};
+  line-height: 30px;
+  font-size: ${(props) => props.$size || "1em"};
 `;
 
-const StyledSubHeading = styled.p<{ $size?: string }>`
+const StyledSubHeading = styled.p<STextProps>`
+  ${defaultTextStyles}
   font-family: "Raleway", sans-serif;
-  color: ${primaryRed};
-  font-size: ${(props) => props.$size || "1.4em"};
+  color: ${(props) => props.$color || primaryRed};
+  font-size: ${(props) => props.$size || "1.2em"};
+`;
+
+const StyledHeadingFour = styled.h4<STextProps>`
+  ${defaultTextStyles}
+  font-size: 1.2rem;
   font-family: "Libre Baskerville", serif;
+  color: ${(props) => props.$color || primaryBlue};
 `;
 
 const StyledSmallText = styled.small``;
 
-export const BlueHeading: React.FC<TextProps> = ({ children, color, size }) => {
+export const BlueHeading: React.FC<TextProps> = ({
+  children,
+  color,
+  size,
+  ...rest
+}) => {
   return (
-    <StyledBlueHeading $color={color} size={size}>
+    <StyledBlueHeading $color={color} $size={size} {...rest}>
       {children}
     </StyledBlueHeading>
   );
 };
 
-export const SubHeading: React.FC<Props> = ({ children }) => {
-  return <StyledSubHeading>{children}</StyledSubHeading>;
+export const Heading4: React.FC<TextProps> = ({
+  children,
+  color,
+  size,
+  ...rest
+}) => {
+  return (
+    <StyledHeadingFour $color={color} $size={size} {...rest}>
+      {children}
+    </StyledHeadingFour>
+  );
 };
 
-export const Paragraph: React.FC<Props> = ({ children }) => {
-  return <StyledParagraph>{children}</StyledParagraph>;
+export const SubHeading: React.FC<TextProps> = ({
+  children,
+  size,
+  color,
+  ...rest
+}) => {
+  return (
+    <StyledSubHeading $color={color} $size={size} {...rest}>
+      {children}
+    </StyledSubHeading>
+  );
 };
 
-export const SmallText: React.FC<TextProps> = ({ children, color }) => {
-  return <StyledSmallText>{children}</StyledSmallText>;
+export const Paragraph: React.FC<TextProps> = ({
+  children,
+  color,
+  size,
+  ...rest
+}) => {
+  return (
+    <StyledParagraph $color={color} $size={size} {...rest}>
+      {children}
+    </StyledParagraph>
+  );
+};
+
+export const SmallText: React.FC<TextProps> = ({
+  children,
+  color,
+  size,
+  ...rest
+}) => {
+  return (
+    <StyledSmallText $color={color} $size={size} {...rest}>
+      {children}
+    </StyledSmallText>
+  );
 };
