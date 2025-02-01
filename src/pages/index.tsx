@@ -57,7 +57,7 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
       <IconCards data={iconCards} />
       <WelcomeToChurch {...wtc} image={wtc.image} />
       <Events data={cleanEvents(events)} />
-      <Watchword />
+      {false && <Watchword />}
       {false && <News data={[]} />}
       <SowingSeeds />
       <WatchAndListenAgain />
