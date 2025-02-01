@@ -3,6 +3,7 @@ import Button from "./Button";
 import HeaderLink from "./HeaderLink";
 import "./header.css";
 import styled from "styled-components";
+import { StaticImage } from "gatsby-plugin-image";
 
 const StyledHeader = styled.header`
   grid-area: header;
@@ -12,13 +13,24 @@ const StyledHeader = styled.header`
   z-index: 2;
 `;
 
+const StyledLogoText = styled.p`
+  margin-left: 12px;
+`;
+
 const Header = () => {
   return (
     <StyledHeader>
       <nav>
         <ul>
-          <img alt="logo" src="../../images/logo.png" />
-          <p>The Eternal Sacred Order of The Cherubim & Seraphim</p>
+          <StaticImage
+            height={54}
+            width={54}
+            alt="logo"
+            src="../../images/logo.png"
+          />
+          <StyledLogoText>
+            The Eternal Sacred Order of The Cherubim & Seraphim
+          </StyledLogoText>
         </ul>
         <ul>
           <li>

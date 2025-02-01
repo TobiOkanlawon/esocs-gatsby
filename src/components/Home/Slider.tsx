@@ -121,7 +121,6 @@ const Slider: React.FC<Props> = ({ data }) => {
           // this is what makes it slide
           if (i !== imageIndex) return <></>;
           const img = getImage(s.sliders.sliderImage.node.localFile);
-          console.log("IMG: ", img);
           return (
             <GatsbyImage
               alt="Alt for now"

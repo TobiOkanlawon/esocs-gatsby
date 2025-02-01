@@ -3,7 +3,9 @@ import {
   StyledFooter,
   StyledFooterColumnHeader,
   StyledFooterLink,
+  StyledFooterLogoColumn,
 } from "./Footer.styles";
+import { StaticImage } from "gatsby-plugin-image";
 
 const Footer = () => {
   // const data = useStaticQuery(
@@ -22,7 +24,14 @@ const Footer = () => {
 
   return (
     <StyledFooter>
-      <div className="footer-columns"></div>
+      <StyledFooterLogoColumn>
+        <StaticImage
+          height={54}
+          width={54}
+          alt="logo"
+          src="../../images/logo.png"
+        />
+      </StyledFooterLogoColumn>
       <div className="footer-columns">
         <ul>
           <StyledFooterColumnHeader>Contact Us</StyledFooterColumnHeader>

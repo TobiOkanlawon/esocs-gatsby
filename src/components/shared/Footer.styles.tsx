@@ -22,3 +22,10 @@ export const StyledFooterColumnHeader = styled.h3`
 export const StyledFooterLink = styled.li`
   margin-bottom: 12px;
 `;
+
+export const StyledFooterLogoColumn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 24px;
+`;
