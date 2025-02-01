@@ -7,6 +7,7 @@ export const pagePadding = 84;
 /* TEXT SIZES */
 export const h3 = "1.4rem";
 
-export const StyledSectionContainer = styled.section`
+export const StyledSectionContainer = styled.section<{ $color?: string }>`
+  ${(props) => props.color && `background-color: ${props.color}`};
   padding: 72px ${pagePadding}px;
 `;

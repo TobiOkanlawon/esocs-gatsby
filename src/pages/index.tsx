@@ -10,6 +10,7 @@ import WatchAndListenAgain from "../components/Home/WatchAndListenAgain";
 import News from "../components/Home/News";
 import Events, { EventDataType } from "../components/Home/Events";
 import { WELCOME_TO_CHURCH_SECTION } from "../constants/sectionIds";
+import ReachOutToUs from "../components/Home/ReachOut";
 
 const cleanWTC = (data: any) => {
   console.log("WTC: ", data);
@@ -60,6 +61,7 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
       {false && <News data={[]} />}
       <SowingSeeds />
       <WatchAndListenAgain />
+      <ReachOutToUs />
     </Layout>
   );
 };

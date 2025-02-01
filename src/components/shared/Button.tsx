@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 type Props = {
   title: string;
-  type: "primary" | "secondary";
+  type?: "primary" | "secondary";
   logo?: React.ReactNode | Element;
-  logoPosition: "left" | "right";
+  logoPosition?: "left" | "right";
   size: "sm" | "md" | "lg";
 };
 
@@ -27,6 +27,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   cursor: pointer;
   font-family: "Montserrat", sans-serif;
   font-weight: 500px;
+  text-transform: uppercase;
 `;
 
 const Button: React.FC<Props> = ({ title, type, size }) => {

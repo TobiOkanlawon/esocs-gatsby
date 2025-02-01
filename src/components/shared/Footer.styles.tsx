@@ -7,8 +7,8 @@ export const StyledFooter = styled.footer`
   display: flex;
   justify-content: space-between;
   padding: 48px 54px;
-  min-height: 720px;
-  max-height: 1024px;
+  height: 120px;
+  max-height: 480px;
 `;
 
 export const StyledFooterColumns = styled.div``;
@@ -20,5 +20,5 @@ export const StyledFooterColumnHeader = styled.h3`
 `;
 
 export const StyledFooterLink = styled.li`
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 `;
