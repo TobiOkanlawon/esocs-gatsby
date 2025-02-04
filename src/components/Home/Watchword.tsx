@@ -6,6 +6,10 @@ import { useStaticQuery, graphql } from "gatsby";
 import { OUR_WATCHWORD_SECTION } from "../../constants/sectionIds";
 import { BlueHeading, Paragraph } from "../shared/Text";
 
+type Props = {
+  showButton?: boolean;
+};
+
 const BackgroundWrapper = styled.div`
   position: relative;
   display: flex;
@@ -17,6 +21,7 @@ const BackgroundWrapper = styled.div`
   width: 100%;
   height: 400px; /* Adjust height */
   overflow: hidden;
+  gap: 18px;
 
   .background-image {
     position: absolute;
@@ -59,7 +64,7 @@ const cleanWatchword = (data: any) => {
   return watchword;
 };
 
-const WatchWord: React.FC = () => {
+const WatchWord: React.FC<Props> = ({ showButton = true }) => {
   const data = useStaticQuery(graphql`
     {
       allWpSection {
@@ -95,12 +100,14 @@ const WatchWord: React.FC = () => {
       <GatsbyImage image={img!} className="background-image" />
       <StyledHeading>{d.title}</StyledHeading>
       <StyledContent>{d.content}</StyledContent>
-      <Button
-        type="primary"
-        logoPosition="right"
-        title="Learn more about us"
-        size="md"
-      />
+      {showButton && (
+        <Button
+          type="primary"
+          logoPosition="right"
+          title="Learn more about us"
+          size="md"
+        />
+      )}
     </BackgroundWrapper>
   );
 };
