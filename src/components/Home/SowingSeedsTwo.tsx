@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { Paragraph, SubHeading } from "../shared/Text";
+import { BlueHeading, Paragraph, SubHeading } from "../shared/Text";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from "gatsby";
-import { SOWING_SEED_ONE_SECTION } from "../../constants/sectionIds";
+import { SOWING_SEED_TWO_SECTION } from "../../constants/sectionIds";
 import Button from "../shared/Button";
+import { StyledSectionContainer as Container } from "../../constants/css";
 
-const StyledContainer = styled.div`
+const StyledContainer = styled(Container)`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
@@ -22,22 +23,25 @@ const StyledRight = styled.div`
 const StyledSubHeading = styled(SubHeading)``;
 
 const StyledParagraph = styled(Paragraph)`
-  margin: 8px 0px;
-  font-weight: bold;
+  margin: 14px 0px;
+`;
+
+const StyledBlueHeading = styled(BlueHeading)`
+  width: 60%;
 `;
 
 const cleanSowingSeeds = (data: any) => {
   const d = data.allWpSection.edges;
-  let welcomeToChurch = d.findLast((e: any) => {
-    return e.node.homeSection.id === SOWING_SEED_ONE_SECTION;
+  let sowingSeends = d.findLast((e: any) => {
+    return e.node.homeSection.id === SOWING_SEED_TWO_SECTION;
   });
 
-  welcomeToChurch = welcomeToChurch.node.homeSection;
+  sowingSeends = sowingSeends.node.homeSection;
 
-  return welcomeToChurch;
+  return sowingSeends;
 };
 
-const SowingSeeds = () => {
+const SowingSeedsTwo = () => {
   const data = useStaticQuery(graphql`
     {
       allWpSection {
@@ -76,13 +80,13 @@ const SowingSeeds = () => {
     <StyledContainer>
       <GatsbyImage image={img!} alt="Alt for now" />
       <StyledRight>
-        <StyledSubHeading>{d.title}</StyledSubHeading>
-        <StyledParagraph size="32px">{d.content}</StyledParagraph>
+        <StyledBlueHeading>{d.title}</StyledBlueHeading>
+        <StyledParagraph>{d.content}</StyledParagraph>
         <Button
           title="GIVE NOW"
           type="primary"
           logo=""
-          size="md"
+          size="sm"
           logoPosition="right"
         />
       </StyledRight>
@@ -90,4 +94,4 @@ const SowingSeeds = () => {
   );
 };
 
-export default SowingSeeds;
+export default SowingSeedsTwo;
