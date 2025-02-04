@@ -18,6 +18,11 @@ const StyledContainer = styled.div`
   margin-bottom: 48px;
 `;
 
+const StyledBlueHeading = styled(BlueHeading)`
+  font-weight: bold;
+  font-size: 2em;
+`;
+
 const CenterAlignedContainer: React.FC<Props> = ({
   title,
   subTitle,
@@ -26,7 +31,7 @@ const CenterAlignedContainer: React.FC<Props> = ({
 }) => {
   return (
     <StyledContainer>
-      <BlueHeading color={titleColor}>{title}</BlueHeading>
+      <StyledBlueHeading color={titleColor}>{title}</StyledBlueHeading>
       <SubHeading color={subTitleColor}>{subTitle}</SubHeading>
     </StyledContainer>
   );
