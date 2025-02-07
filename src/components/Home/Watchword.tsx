@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "../shared/Button";
+import { RightIconButton as Button } from "../shared/Button";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { useStaticQuery, graphql } from "gatsby";
 import { OUR_WATCHWORD_SECTION } from "../../constants/sectionIds";

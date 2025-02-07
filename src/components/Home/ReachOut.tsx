@@ -3,7 +3,7 @@ import { StyledSectionContainer } from "../../constants/css";
 import CenterAlignedContainer from "../shared/CenterAlignedContainer";
 import styled from "styled-components";
 import Input, { InputLine } from "../shared/Input";
-import Button from "../shared/Button";
+import { RightIconButton as Button } from "../shared/Button";
 
 const StyledFormContainer = styled.div``;
 

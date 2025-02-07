@@ -4,7 +4,7 @@ import { Paragraph, SubHeading } from "../shared/Text";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from "gatsby";
 import { SOWING_SEED_ONE_SECTION } from "../../constants/sectionIds";
-import Button from "../shared/Button";
+import { RightIconButton as Button } from "../shared/Button";
 
 const StyledContainer = styled.div`
   display: grid;
@@ -81,7 +81,7 @@ const SowingSeeds = () => {
         <Button
           title="GIVE NOW"
           type="primary"
-          logo=""
+          icon=""
           size="md"
           logoPosition="right"
         />

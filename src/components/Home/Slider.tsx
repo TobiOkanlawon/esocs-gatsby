@@ -1,8 +1,10 @@
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import Button from "../shared/Button";
+import { LeftIconButton, RightIconButton } from "../shared/Button";
 import { BlueHeading, HeadingOne } from "../shared/Text";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 type SliderType = any;
 
@@ -156,10 +158,9 @@ const Slider: React.FC<Props> = ({ data }) => {
                   }}
                 />
               </StyledDescriptionContainer>
-              <Button
-                logoPosition="right"
-                type="primary"
+              <RightIconButton
                 size="lg"
+		icon={<FontAwesomeIcon icon={faArrowRight} />}
                 title={s.sliders.buttonText}
               />
             </>

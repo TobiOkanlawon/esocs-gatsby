@@ -4,7 +4,7 @@ import { BlueHeading, Paragraph, SubHeading } from "../shared/Text";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from "gatsby";
 import { SOWING_SEED_TWO_SECTION } from "../../constants/sectionIds";
-import Button from "../shared/Button";
+import { RightIconButton as Button } from "../shared/Button";
 import { StyledSectionContainer as Container } from "../../constants/css";
 
 const StyledContainer = styled(Container)`
@@ -85,7 +85,7 @@ const SowingSeedsTwo = () => {
         <Button
           title="GIVE NOW"
           type="primary"
-          logo=""
+          icon=""
           size="sm"
           logoPosition="right"
         />

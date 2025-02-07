@@ -2,7 +2,7 @@ import React from "react";
 import CenterAlignedContainer from "../shared/CenterAlignedContainer";
 import styled from "styled-components";
 import { StyledSectionContainer, pagePadding } from "../../constants/css";
-import Button from "../shared/Button";
+import { RightIconButton as Button } from "../shared/Button";
 
 type CardProps = {
   id: string;
