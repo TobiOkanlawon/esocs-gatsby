@@ -13,7 +13,6 @@ import { WELCOME_TO_CHURCH_SECTION } from "../constants/sectionIds";
 import ReachOutToUs from "../components/Home/ReachOut";
 
 const cleanWTC = (data: any) => {
-  console.log("WTC: ", data);
   let welcomeToChurch = data.findLast((e: any) => {
     return e.node.homeSection.id === WELCOME_TO_CHURCH_SECTION;
   });
@@ -48,6 +47,7 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
   const iconCards = data.allWpIconcard.edges;
   const sections = data.allWpSection.edges as any[];
   const events = data.allWpEvent.edges as any[];
+  const news = data.allWpNews.edges as any[];
 
   const wtc = cleanWTC(sections);
 
@@ -58,7 +58,7 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
       <WelcomeToChurch {...wtc} image={wtc.image} />
       <Events data={cleanEvents(events)} />
       <Watchword />
-      {false && <News data={[]} />}
+      <News data={[]} />
       <SowingSeeds />
       <WatchAndListenAgain />
       <ReachOutToUs />
@@ -159,7 +159,7 @@ export const pageQuery = graphql`
     allWpNews {
       edges {
         node {
-          news {
+          newsType {
             title
             date
           }

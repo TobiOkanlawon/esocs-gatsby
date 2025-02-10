@@ -11,6 +11,7 @@ const StyledContainer = styled.div`
   grid-template-columns: repeat(2, minmax(540px, 1fr));
   grid-gap: 12px;
   justify-items: center;
+  padding: 24px 0px;
 
   @media (max-width: ${breakPoints.smallScreen}) {
     grid-template-columns: 1fr;

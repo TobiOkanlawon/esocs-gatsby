@@ -11,3 +11,10 @@ export const StyledSectionContainer = styled.section<{ $color?: string }>`
   ${(props) => props.color && `background-color: ${props.color}`};
   padding: 72px ${pagePadding}px;
 `;
+
+export const CenterButtonContainer = styled.div`
+  margin: 24px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
