@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledSectionContainer } from "../../constants/css";
+import { CenterButtonContainer, StyledSectionContainer } from "../../constants/css";
 import CenterAlignedContainer from "../shared/CenterAlignedContainer";
 import styled from "styled-components";
 import Input, { InputLine } from "../shared/Input";
@@ -42,7 +42,9 @@ const ReachOutToUs = () => {
           required
         />
       </StyledFormContainer>
-      <Button title="Send Message" size="md" />
+      <CenterButtonContainer>
+	<Button title="Send Message" size="md" />
+      </CenterButtonContainer>
     </StyledSectionContainer>
   );
 };

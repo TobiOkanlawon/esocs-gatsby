@@ -23,11 +23,12 @@ const StyledRight = styled.div`
 const StyledSubHeading = styled(SubHeading)``;
 
 const StyledParagraph = styled(Paragraph)`
-  margin: 14px 0px;
+  margin: 18px 0px;
 `;
 
 const StyledBlueHeading = styled(BlueHeading)`
   width: 60%;
+  font-weight: bold;
 `;
 
 const cleanSowingSeeds = (data: any) => {
@@ -82,13 +83,7 @@ const SowingSeedsTwo = () => {
       <StyledRight>
         <StyledBlueHeading>{d.title}</StyledBlueHeading>
         <StyledParagraph>{d.content}</StyledParagraph>
-        <Button
-          title="GIVE NOW"
-          type="primary"
-          icon=""
-          size="sm"
-          logoPosition="right"
-        />
+        <Button title="GIVE NOW" size="sm" logoPosition="right" />
       </StyledRight>
     </StyledContainer>
   );

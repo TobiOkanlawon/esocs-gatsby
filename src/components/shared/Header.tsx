@@ -1,9 +1,11 @@
 import React from "react";
-import Button from "./Button";
+import { LeftIconButton } from "./Button";
 import HeaderLink from "./HeaderLink";
 import "./header.css";
 import styled from "styled-components";
 import { StaticImage } from "gatsby-plugin-image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGift } from "@fortawesome/free-solid-svg-icons";
 
 const StyledHeader = styled.header`
   grid-area: header;
@@ -34,7 +36,7 @@ const Header = () => {
         </ul>
         <ul>
           <li>
-            <HeaderLink title="About us" href="/" />
+            <HeaderLink title="About us" href="/about" />
           </li>
           <li>
             <HeaderLink title="About us" href="/" />
@@ -46,12 +48,10 @@ const Header = () => {
             <HeaderLink title="About us" href="/" />
           </li>
           <li id="header-link-special">
-            <Button
-              logo={<span />}
+            <LeftIconButton
               title="Giving"
-              logoPosition="left"
               size="sm"
-              type="primary"
+              icon={<FontAwesomeIcon icon={faGift} />}
             />
           </li>
         </ul>

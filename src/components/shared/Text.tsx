@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { grayTextColor, primaryBlue, primaryRed } from "../../constants/colors";
 
-type Props = { children: React.ReactNode };
+type Props = { children?: React.ReactNode };
 
 const defaultTextStyles = `
 line-height: 30px;
@@ -32,14 +32,14 @@ const StyledHeadingOne = styled.h1<STextProps>`
   line-height: 60px;
   font-family: "Libre Baskerville", serif;
   color: ${(props) => props.$color || "white"};
-  font-size: 4em;
+  font-size: ${(props) => props.$size || "4em"};
 `;
 
 const StyledBlueHeading = styled.h3<STextProps>`
   ${defaultTextStyles}
   font-family: "Libre Baskerville", serif;
   color: ${(props) => props.$color || primaryBlue};
-  font-size: 1.8em;
+  font-size: ${(props) => props.$size || "1.8em"};
 `;
 
 const StyledParagraph = styled.p<STextProps>`

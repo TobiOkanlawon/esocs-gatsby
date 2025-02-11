@@ -97,12 +97,11 @@ const WatchWord: React.FC<Props> = ({ showButton = true }) => {
 
   return (
     <BackgroundWrapper>
-      <GatsbyImage image={img!} className="background-image" />
+      <GatsbyImage alt="Alt for now" image={img!} className="background-image" />
       <StyledHeading>{d.title}</StyledHeading>
       <StyledContent>{d.content}</StyledContent>
       {showButton && (
         <Button
-          type="primary"
           logoPosition="right"
           title="Learn more about us"
           size="md"

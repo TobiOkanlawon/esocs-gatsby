@@ -19,11 +19,15 @@ const StyledRight = styled.div`
   padding: 24px;
 `;
 
-const StyledSubHeading = styled(SubHeading)``;
+const StyledSubHeading = styled(SubHeading)`
+  font-weight: bold;
+  font-family: "Libre Baskerville", serif;
+`;
 
 const StyledParagraph = styled(Paragraph)`
-  margin: 8px 0px;
+  margin: 18px 0px;
   font-weight: bold;
+  line-height: 36px;
 `;
 
 const cleanSowingSeeds = (data: any) => {
@@ -78,13 +82,7 @@ const SowingSeeds = () => {
       <StyledRight>
         <StyledSubHeading>{d.title}</StyledSubHeading>
         <StyledParagraph size="32px">{d.content}</StyledParagraph>
-        <Button
-          title="GIVE NOW"
-          type="primary"
-          icon=""
-          size="md"
-          logoPosition="right"
-        />
+        <Button title="GIVE NOW" size="md" logoPosition="right" />
       </StyledRight>
     </StyledContainer>
   );

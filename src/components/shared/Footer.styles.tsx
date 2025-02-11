@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "gatsby";
 
 export const StyledFooter = styled.footer`
   grid-area: footer;
@@ -19,8 +20,10 @@ export const StyledFooterColumnHeader = styled.h3`
   margin-bottom: 12px;
 `;
 
-export const StyledFooterLink = styled.li`
+export const StyledFooterLink = styled(Link)`
+  display: block;
   margin-bottom: 12px;
+  cursor: pointer;
 `;
 
 export const StyledFooterLogoColumn = styled.div`

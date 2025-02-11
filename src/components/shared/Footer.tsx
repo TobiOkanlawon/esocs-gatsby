@@ -43,7 +43,7 @@ const Footer = () => {
       <div className="footer-columns">
         <ul>
           <StyledFooterColumnHeader>Quick links</StyledFooterColumnHeader>
-          <StyledFooterLink>About</StyledFooterLink>
+          <StyledFooterLink to="/about">About</StyledFooterLink>
           <StyledFooterLink>News</StyledFooterLink>
           <StyledFooterLink>Giving</StyledFooterLink>
         </ul>

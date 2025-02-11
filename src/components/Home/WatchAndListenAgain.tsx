@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/react-fontawesome";
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import { Paragraph } from "../shared/Text";
+import TwoCardGrid from "../shared/TwoCardGrid";
 
 type CardProps = {
   icon: FontAwesomeIconProps["icon"];
@@ -36,12 +37,6 @@ const StyledParagraph = styled(Paragraph)`
   text-align: center;
 `;
 
-const StyledCardsContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-`;
-
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   color: ${primaryBlue};
   font-size: 48px;
@@ -65,13 +60,13 @@ const WatchAndListenAgain = () => {
         subTitleColor="#FFFFFF"
         subTitle="Follow up on the word on the go or from anywhere in the world"
       />
-      <StyledCardsContainer>
+      <TwoCardGrid>
         <Card icon={faVideo} text="Watch Live Sermons or recaps here" />
         <Card
           icon={faVideo}
           text="See pictures of previous events and services here"
         />
-      </StyledCardsContainer>
+      </TwoCardGrid>
     </StyledContainer>
   );
 };

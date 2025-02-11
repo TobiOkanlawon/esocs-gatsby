@@ -6,7 +6,7 @@ import Vision from "../components/About/Vision";
 import MeetOurPastors from "../components/About/PastorsAbridged";
 import ServiceTimes from "../components/About/ServiceTimesAbridged";
 import { CenterButtonContainer } from "../constants/css";
-import Button from "../components/shared/Button";
+import { RightIconButton as Button } from "../components/shared/Button";
 import WatchWord from "../components/Home/Watchword";
 import SowingSeedsTwo from "../components/Home/SowingSeedsTwo";
 
@@ -23,7 +23,7 @@ const About: React.FC<PageProps> = ({ data }) => {
       <MeetOurPastors />
       <ServiceTimes />
       <CenterButtonContainer>
-        <Button size="md" title="View More" logo="" logoPosition="right" />
+        <Button size="md" title="View More" logoPosition="right" />
       </CenterButtonContainer>
       <WatchWord showButton={false} />
       <SowingSeedsTwo />
@@ -48,6 +48,16 @@ export const pageQuery = graphql`
             }
             bannerButtonText
             bannerDescription
+          }
+        }
+      }
+    }
+    allWpPastor {
+      edges {
+        node {
+          id
+          pastors {
+            pastorsName
           }
         }
       }

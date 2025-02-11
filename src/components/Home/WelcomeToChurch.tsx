@@ -4,6 +4,7 @@ import { BlueHeading, Paragraph, SubHeading } from "../shared/Text";
 import { StyledSectionContainer } from "../../constants/css";
 import { grayBackgroundColor } from "../../constants/colors";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import breakPoints from "../../constants/breakPoints";
 
 type Props = {
   title: string;
@@ -17,14 +18,21 @@ const StyledWelcomeToChurchContainer = styled(StyledSectionContainer)`
   grid-template-columns: 2fr 3fr;
   grid-gap: 48px;
   background-color: ${grayBackgroundColor};
+
+  @media (max-width: ${breakPoints.smallScreen}) {
+    grid-template-columns: 1fr;
+  }
 `;
 
-const StyledLeftSide = styled.div``;
+const StyledLeftSide = styled.div`
+  @media (max-width: ${breakPoints.smallScreen}) {
+    display: none;
+  }
+`;
 
 const StyledRightSide = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 `;
 

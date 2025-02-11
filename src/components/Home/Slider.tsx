@@ -2,9 +2,9 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { LeftIconButton, RightIconButton } from "../shared/Button";
-import { BlueHeading, HeadingOne } from "../shared/Text";
+import { BlueHeading, HeadingOne, Paragraph } from "../shared/Text";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 type SliderType = any;
 
@@ -84,7 +84,12 @@ const StyledInnerContainer = styled.div``;
 
 const StyledHeadingOne = styled(HeadingOne)`
   text-align: center;
-  margin-bottom: 14px;
+  margin-bottom: 36px;
+`;
+
+const StyledParagraph = styled(Paragraph)`
+  color: white;
+  font-size: 1.3em;
 `;
 
 const SliderTrackerButtons: React.FC<SliderTrackerButtonProps> = ({
@@ -137,7 +142,6 @@ const Slider: React.FC<Props> = ({ data }) => {
           // this is what makes it slide
           if (i !== imageIndex) return <></>;
           const img = getImage(s.sliders.sliderImage.node.localFile);
-          console.log("S: ", s);
           return (
             <>
               <GatsbyImage
@@ -152,7 +156,7 @@ const Slider: React.FC<Props> = ({ data }) => {
                 />
               </div>
               <StyledDescriptionContainer>
-                <p
+                <StyledParagraph
                   dangerouslySetInnerHTML={{
                     __html: s.sliders.sliderCaption,
                   }}
@@ -160,7 +164,7 @@ const Slider: React.FC<Props> = ({ data }) => {
               </StyledDescriptionContainer>
               <RightIconButton
                 size="lg"
-		icon={<FontAwesomeIcon icon={faArrowRight} />}
+                icon={<FontAwesomeIcon icon={faArrowRight} />}
                 title={s.sliders.buttonText}
               />
             </>

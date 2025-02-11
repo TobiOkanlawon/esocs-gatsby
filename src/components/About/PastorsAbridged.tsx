@@ -14,7 +14,7 @@ const MeetOurPastors = () => {
         title="Meet Our Pastors"
         subTitle="Meet our visionary founder and our dedicated pastoral team"
       />
-      <PastorGrid pastors={[]} />
+      <PastorGrid number={3}/>
       <CenterButtonContainer>
         <Button size="md" title="View More" />
       </CenterButtonContainer>

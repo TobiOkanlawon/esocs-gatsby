@@ -6,6 +6,7 @@ import { grayBackgroundColor, grayTextColor } from "../../constants/colors";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import formatDate from "../../libs/formatDate";
 import { StyledSectionContainer } from "../../constants/css";
+import TwoCardGrid from "../shared/TwoCardGrid";
 
 export type EventDataType = {
   id: string;
@@ -31,6 +32,7 @@ const StyledCard = styled.div`
   border-radius: 18px;
   padding: 14px;
   padding-bottom: 24px;
+  width: 540px;
 `;
 
 const StyledEventsContainer = styled.div`
@@ -101,11 +103,16 @@ const Events: React.FC<Props> = ({ data }) => {
         title="Upcoming Events"
         subTitle="Stay connected and inspired with our upcoming events"
       />
-      <StyledEventsContainer>
+      {/*<StyledEventsContainer>
         {data.map((ev: EventDataType) => {
           return <Event key={ev.id} {...ev} />;
         })}
-      </StyledEventsContainer>
+        </StyledEventsContainer> */}
+      <TwoCardGrid>
+        {data.map((ev: EventDataType) => {
+          return <Event key={ev.id} {...ev} />;
+        })}
+      </TwoCardGrid>
     </StyledSectionContainer>
   );
 };
