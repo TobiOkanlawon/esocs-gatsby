@@ -58,8 +58,8 @@ const StyledEventDescription = styled(SubHeading)`
 `;
 
 const StyledSmallText = styled(SmallText)`
-  display: inline-block;
-  margin-right: 8px;
+  display: block;
+  margin: 8px 0px;
 `;
 
 const StyledEventDateRow = styled.div``;
