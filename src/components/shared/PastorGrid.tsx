@@ -1,13 +1,13 @@
 import React from "react";
-import { PastorType } from "../../libs/types";
 import Card from "../Pastors/PastorCard";
 import styled from "styled-components";
 import breakPoints from "../../constants/breakPoints";
 import { graphql, useStaticQuery } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
+import { grayBackgroundColor } from "../../constants/colors";
 
 type Props = {
-  number: number;
+  number?: number;
 };
 
 const StyledContainer = styled.div`
@@ -28,8 +28,13 @@ const PastorGrid: React.FC<Props> = ({ number }) => {
         edges {
           node {
             pastors {
-              pastorsName
+              firstName
+              lastName
+              title
               designation
+              facebookLink
+              instagramLink
+              xLink
               pastorsImage {
                 node {
                   localFile {
@@ -46,7 +51,10 @@ const PastorGrid: React.FC<Props> = ({ number }) => {
     }
   `);
 
-  const pastors = data.allWpPastor.edges.slice(0, number);
+  const pastors = data.allWpPastor.edges.slice(
+    0,
+    number || data.allWpPastor.edges.length
+  );
 
   return (
     <StyledContainer>
@@ -55,8 +63,12 @@ const PastorGrid: React.FC<Props> = ({ number }) => {
         return (
           <Card
             image={img!}
-            name={p.node.pastors.pastorsName}
-            title={p.node.pastors.designation}
+            name={`${p.node.pastors.firstName} ${p.node.pastors.lastName}`}
+            designation={p.node.pastors.designation}
+            title={p.node.pastors.title}
+            facebookLink={p.node.pastors.facebookLink}
+            instagramLink={p.node.pastors.instagramLink}
+            twitterLink={p.node.pastors.xLink}
           />
         );
       })}

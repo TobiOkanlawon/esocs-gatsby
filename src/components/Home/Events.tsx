@@ -23,6 +23,7 @@ export type EventDataType = {
 
 type Props = {
   data: EventDataType[];
+  backgroundColor?: string;
 };
 
 const StyledContainer = styled.section``;
@@ -33,13 +34,11 @@ const StyledCard = styled.div`
   padding: 14px;
   padding-bottom: 24px;
   width: 540px;
-`;
 
-const StyledEventsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 48px;
+  &:hover {
+    animation: scale-up 0.4s ease-in-out;
+    cursor: pointer;
+  }
 `;
 
 const StyledCardBottom = styled.div``;
@@ -96,18 +95,13 @@ const Event: React.FC<EventDataType> = ({
   );
 };
 
-const Events: React.FC<Props> = ({ data }) => {
+const Events: React.FC<Props> = ({ data, backgroundColor }) => {
   return (
-    <StyledSectionContainer>
+    <StyledSectionContainer color={backgroundColor}>
       <CenterAlignedContainer
         title="Upcoming Events"
         subTitle="Stay connected and inspired with our upcoming events"
       />
-      {/*<StyledEventsContainer>
-        {data.map((ev: EventDataType) => {
-          return <Event key={ev.id} {...ev} />;
-        })}
-        </StyledEventsContainer> */}
       <TwoCardGrid>
         {data.map((ev: EventDataType) => {
           return <Event key={ev.id} {...ev} />;

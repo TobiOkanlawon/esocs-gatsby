@@ -40,20 +40,6 @@ const StyledCard = styled.div`
     background-color: #ebebeb;
     animation: scale-up 0.4s ease-in-out;
   }
-
-  @keyframes scale-up {
-    0% {
-      transform: scale(1);
-    }
-
-    50% {
-      transform: scale(1.02);
-    }
-
-    100% {
-      transform: scale(1);
-    }
-  }
 `;
 
 const StyledCardRight = styled.div`

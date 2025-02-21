@@ -37,6 +37,9 @@ const StyledButton = styled.button<StyledButtonProps>`
   font-family: "Montserrat", sans-serif;
   font-weight: 500px;
   text-transform: uppercase;
+  &:hover {
+    animation: scale-up 0.4s ease-in-out;
+  }
 `;
 
 const StyledText = styled.span`
@@ -61,9 +64,14 @@ const Button: React.FC<Props> = ({
   );
 };
 
-export const RightIconButton: React.FC<Props> = ({children, icon, ...rest}) => {
+export const RightIconButton: React.FC<Props> = ({
+  children,
+  icon,
+  ...rest
+}) => {
   return (
-    <Button {...rest}
+    <Button
+      {...rest}
       logoPosition="right"
       icon={icon || <FontAwesomeIcon icon={faArrowRight} />}
     >
@@ -72,7 +80,7 @@ export const RightIconButton: React.FC<Props> = ({children, icon, ...rest}) => {
   );
 };
 
-export const LeftIconButton: React.FC<Props> = ({children, ...rest}) => {
+export const LeftIconButton: React.FC<Props> = ({ children, ...rest }) => {
   return (
     <Button {...rest} logoPosition="left">
       {children}

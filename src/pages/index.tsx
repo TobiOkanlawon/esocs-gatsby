@@ -58,7 +58,7 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
       <WelcomeToChurch {...wtc} image={wtc.image} />
       <Events data={cleanEvents(events)} />
       <Watchword />
-      <News data={[]} />
+      <News/>
       <SowingSeeds />
       <WatchAndListenAgain />
       <ReachOutToUs />

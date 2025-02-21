@@ -52,16 +52,6 @@ export const pageQuery = graphql`
         }
       }
     }
-    allWpPastor {
-      edges {
-        node {
-          id
-          pastors {
-            pastorsName
-          }
-        }
-      }
-    }
   }
 `;
 
