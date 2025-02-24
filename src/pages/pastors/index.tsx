@@ -6,6 +6,8 @@ import { getImage } from "gatsby-plugin-image";
 import { PageProps, graphql } from "gatsby";
 import { OUR_PASTORS_SECTION } from "../../constants/sectionIds";
 import PastorGrid from "../../components/shared/PastorGrid";
+import WatchAndListenAgain from "../../components/Home/WatchAndListenAgain";
+import SowingSeedsTwo from "../../components/Home/SowingSeedsTwo";
 
 const cleanPastorData = (data: any) => {
   const edges = data.allWpBanner.edges as any[];
@@ -27,6 +29,8 @@ const Pastors: React.FC<PageProps> = ({ data }) => {
       <StyledSectionContainer>
         <PastorGrid />
       </StyledSectionContainer>
+      <WatchAndListenAgain />
+      <SowingSeedsTwo />
     </Layout>
   );
 };

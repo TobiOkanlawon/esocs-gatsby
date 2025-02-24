@@ -1,4 +1,4 @@
-import { PageProps, graphql } from "gatsby";
+import { PageProps, graphql, navigate } from "gatsby";
 import * as React from "react";
 import Layout from "../layouts/PageLayout";
 import { getImage } from "gatsby-plugin-image";
@@ -11,6 +11,10 @@ import WatchWord from "../components/Home/Watchword";
 import SowingSeedsTwo from "../components/Home/SowingSeedsTwo";
 
 const About: React.FC<PageProps> = ({ data }) => {
+  const routeToServiceTimes = () => {
+    navigate("/service-times");
+  };
+
   const aboutUsNode = data.allWpBanner.edges[0].node.banners;
   const img = getImage(aboutUsNode.bannerImage.node.localFile);
   return (
@@ -23,7 +27,12 @@ const About: React.FC<PageProps> = ({ data }) => {
       <MeetOurPastors />
       <ServiceTimes />
       <CenterButtonContainer>
-        <Button size="md" title="View More" logoPosition="right" />
+        <Button
+          onClick={routeToServiceTimes}
+          size="md"
+          title="View More"
+          logoPosition="right"
+        />
       </CenterButtonContainer>
       <WatchWord showButton={false} />
       <SowingSeedsTwo />

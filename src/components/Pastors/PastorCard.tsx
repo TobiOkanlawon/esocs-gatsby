@@ -11,14 +11,17 @@ import {
   faSquareXTwitter,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import { navigate } from "gatsby";
 
 type CardProps = {
+  id: string;
   image: IGatsbyImageData;
   name: string;
   title: string;
   designation: string;
   facebookLink?: string;
   instagramLink?: string;
+  showViewProfileButton?: boolean;
   twitterLink?: string;
 };
 
@@ -53,6 +56,7 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
 `;
 
 const Card: React.FC<CardProps> = ({
+  id,
   image,
   name,
   title,
@@ -60,8 +64,11 @@ const Card: React.FC<CardProps> = ({
   facebookLink,
   instagramLink,
   twitterLink,
+  showViewProfileButton = true,
 }) => {
-  const handleRouteToPastorPage = () => {};
+  const handleRouteToPastorPage = (id: string) => {
+    navigate(`/pastors/${id}`);
+  };
 
   const routeToTwitter = () => {};
   const routeToFacebook = () => {};
@@ -92,7 +99,11 @@ const Card: React.FC<CardProps> = ({
             <StyledFontAwesomeIcon onClick={routeToTwitter} icon={faXTwitter} />
           )}
         </StyledSocialMediaContainer>
-        <ReadMore onClick={handleRouteToPastorPage}>View Profile</ReadMore>
+        {showViewProfileButton && (
+          <ReadMore onClick={() => handleRouteToPastorPage(id)}>
+            View Profile
+          </ReadMore>
+        )}
       </StyledContainer>
     </StyledCard>
   );

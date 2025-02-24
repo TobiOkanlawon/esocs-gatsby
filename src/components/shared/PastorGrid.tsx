@@ -27,6 +27,7 @@ const PastorGrid: React.FC<Props> = ({ number }) => {
       allWpPastor {
         edges {
           node {
+            id
             pastors {
               firstName
               lastName
@@ -62,6 +63,7 @@ const PastorGrid: React.FC<Props> = ({ number }) => {
         const img = getImage(p.node.pastors.pastorsImage.node.localFile);
         return (
           <Card
+            id={p.node.id}
             image={img!}
             name={`${p.node.pastors.firstName} ${p.node.pastors.lastName}`}
             designation={p.node.pastors.designation}
