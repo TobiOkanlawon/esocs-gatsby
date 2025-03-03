@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import CenterAlignedContainer from "../shared/CenterAlignedContainer";
-import { BlueHeading, Heading4, SmallText, SubHeading } from "../shared/Text";
+import { Heading4, SmallText, SubHeading } from "../shared/Text";
 import { grayBackgroundColor, grayTextColor } from "../../constants/colors";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import formatDate from "../../libs/formatDate";
@@ -63,7 +63,7 @@ const StyledSmallText = styled(SmallText)`
 
 const StyledEventDateRow = styled.div``;
 
-const Event: React.FC<EventDataType> = ({
+export const EventCard: React.FC<EventDataType> = ({
   title,
   description,
   startTime,
@@ -104,7 +104,7 @@ const Events: React.FC<Props> = ({ data, backgroundColor }) => {
       />
       <TwoCardGrid>
         {data.map((ev: EventDataType) => {
-          return <Event key={ev.id} {...ev} />;
+          return <EventCard key={ev.id} {...ev} />;
         })}
       </TwoCardGrid>
     </StyledSectionContainer>

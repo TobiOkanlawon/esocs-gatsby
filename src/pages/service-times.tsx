@@ -7,14 +7,7 @@ import Times from "../components/ServiceTimes/Times";
 import Events from "../components/Home/Events";
 import WatchAndListenAgain from "../components/Home/WatchAndListenAgain";
 import { grayBackgroundColor } from "../constants/colors";
-
-const cleanBanner = (data: any) => {
-  const edges = data.allWpBanner.edges as any[];
-  const bannerData = edges.findLast((v) => {
-    return v.node.banners.bannerPage === OUR_SERVICE_TIMES_BANNER;
-  });
-  return bannerData;
-};
+import { getBanner } from "../libs/helpers";
 
 const cleanEvents = (data: any) => {
   const d: any[] = [];
@@ -37,7 +30,7 @@ const cleanEvents = (data: any) => {
 };
 
 const ServiceTimes = ({ data }) => {
-  const d = cleanBanner(data);
+  const d = getBanner(OUR_SERVICE_TIMES_BANNER, data);
   const img = getImage(d.node.banners.bannerImage.node.localFile);
   return (
     <Layout

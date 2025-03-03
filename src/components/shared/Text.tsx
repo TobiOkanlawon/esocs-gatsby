@@ -11,6 +11,7 @@ line-height: 30px;
 type TextProps = {
   color?: string;
   size?: string;
+  bold?: boolean;
 } & Props &
   (
     | React.DetailedHTMLProps<
@@ -26,6 +27,7 @@ type TextProps = {
 type STextProps = {
   $color?: string;
   $size?: string;
+  $bold?: boolean;
 };
 
 const StyledHeadingOne = styled.h1<STextProps>`
@@ -38,6 +40,7 @@ const StyledHeadingOne = styled.h1<STextProps>`
 const StyledBlueHeading = styled.h3<STextProps>`
   ${defaultTextStyles}
   font-family: "Libre Baskerville", serif;
+  ${(props) => props.$bold && "font-weight: bold; "}
   color: ${(props) => props.$color || primaryBlue};
   font-size: ${(props) => props.$size || "1.8em"};
 `;
@@ -83,10 +86,11 @@ export const BlueHeading: React.FC<TextProps> = ({
   children,
   color,
   size,
+  bold,
   ...rest
 }) => {
   return (
-    <StyledBlueHeading $color={color} $size={size} {...rest}>
+    <StyledBlueHeading $bold={bold} $color={color} $size={size} {...rest}>
       {children}
     </StyledBlueHeading>
   );

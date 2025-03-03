@@ -8,22 +8,15 @@ import { OUR_PASTORS_SECTION } from "../../constants/sectionIds";
 import PastorGrid from "../../components/shared/PastorGrid";
 import WatchAndListenAgain from "../../components/Home/WatchAndListenAgain";
 import SowingSeedsTwo from "../../components/Home/SowingSeedsTwo";
-
-const cleanPastorData = (data: any) => {
-  const edges = data.allWpBanner.edges as any[];
-  const bannerData = edges.findLast((v) => {
-    return v.node.banners.bannerPage === OUR_PASTORS_SECTION;
-  });
-  return bannerData;
-};
+import { getBanner } from "../../libs/helpers";
 
 const Pastors: React.FC<PageProps> = ({ data }) => {
-  const d = cleanPastorData(data);
-  const img = getImage(d.node.banners.bannerImage.node.localFile);
+  const banner = getBanner(OUR_PASTORS_SECTION, data);
+  const img = getImage(banner.node.banners.bannerImage.node.localFile);
   return (
     <Layout
-      title={d.node.banners.bannerButtonText}
-      subTitle={d.node.banners.bannerDescription}
+      title={banner.node.banners.bannerButtonText}
+      subTitle={banner.node.banners.bannerDescription}
       image={img}
     >
       <StyledSectionContainer>
