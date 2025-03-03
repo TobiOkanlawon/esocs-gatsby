@@ -7,15 +7,17 @@ import TwoCardGrid from "../components/shared/TwoCardGrid";
 import { EventCard, EventDataType } from "../components/Home/Events";
 import { getBanner } from "../libs/helpers";
 import { OUR_EVENTS_BANNER } from "../constants/sectionIds";
+import WatchAndListenAgain from "../components/Home/WatchAndListenAgain";
 
 const Page: React.FC<PageProps> = ({ data }) => {
   const events = data.allWpEvent.edges as any[];
   const banner = getBanner(OUR_EVENTS_BANNER, data);
-  const img = getImage(banner.bannerImage.node.localFile);
+  console.log(banner);
+  const img = getImage(banner.node.banners.bannerImage.node.localFile);
   return (
     <Layout
-      title={banner.bannerButtonText}
-      subTitle={banner.bannerDescription}
+      title={banner.node.banners.bannerButtonText}
+      subTitle={banner.node.banners.bannerDescription}
       image={img!}
     >
       <StyledSectionContainer>
@@ -38,6 +40,7 @@ const Page: React.FC<PageProps> = ({ data }) => {
           })}
         </TwoCardGrid>
       </StyledSectionContainer>
+      <WatchAndListenAgain />
     </Layout>
   );
 };
@@ -58,6 +61,7 @@ export const pageQuery = graphql`
               }
             }
             bannerButtonText
+            bannerPage
             bannerDescription
           }
         }
