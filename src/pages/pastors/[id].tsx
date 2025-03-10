@@ -21,25 +21,21 @@ const getIndividualPastor = (data: any, id: string) => {
   }).node.pastors;
 };
 
-const Pastor = () => {
-  return <></>;
+const Pastor: React.FC<PageProps> = ({ data, params }) => {
+  const d = cleanPastors(data.allWpBanner.edges);
+  const pastor = getIndividualPastor(data.allWpPastor.edges, params.id);
+  const img = getImage(d.bannerImage.node.localFile);
+
+  return (
+    <Layout
+      title={d.bannerButtonText}
+      subTitle={d.bannerDescription}
+      image={img}
+    >
+      <PastorInfo pastor={pastor} />
+    </Layout>
+  );
 };
-
-// const Pastor: React.FC<PageProps> = ({ data, params }) => {
-//   const d = cleanPastors(data.allWpBanner.edges);
-//   const pastor = getIndividualPastor(data.allWpPastor.edges, params.id);
-//   const img = getImage(d.bannerImage.node.localFile);
-
-//   return (
-//     <Layout
-//       title={d.bannerButtonText}
-//       subTitle={d.bannerDescription}
-//       image={img}
-//     >
-//       <PastorInfo pastor={pastor} />
-//     </Layout>
-//   );
-// };
 
 export const pageQuery = graphql`
   query {

@@ -80,25 +80,21 @@ const GalleryCards = () => {
   );
 };
 
-// const Gallery = ({ data }) => {
-//   const banner = getBanner(PHOTO_GALLERY_BANNER, data);
-//   const img = getImage(banner.node.banners.bannerImage.node.localFile);
+const Gallery = ({ data }) => {
+  const banner = getBanner(PHOTO_GALLERY_BANNER, data);
+  const img = getImage(banner.node.banners.bannerImage.node.localFile);
 
-//   const events = data.allWpEvent.edges as any[];
-//   return (
-//     <Layout
-//       title={banner.node.banners.bannerButtonText}
-//       subTitle={banner.node.banners.bannerDescription}
-//       image={img}
-//     >
-//       <GalleryCards />
-//       <Events data={cleanEvents(events)} />
-//     </Layout>
-//   );
-// };
-
-const Gallery = () => {
-  return <> </>;
+  const events = data.allWpEvent.edges as any[];
+  return (
+    <Layout
+      title={banner.node.banners.bannerButtonText}
+      subTitle={banner.node.banners.bannerDescription}
+      image={img}
+    >
+      <GalleryCards />
+      <Events data={cleanEvents(events)} />
+    </Layout>
+  );
 };
 
 export const pageQuery = graphql`
