@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { StaticImage } from "gatsby-plugin-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGift } from "@fortawesome/free-solid-svg-icons";
+import { navigate } from "gatsby";
 
 const StyledHeader = styled.header`
   grid-area: header;
@@ -19,11 +20,19 @@ const StyledLogoText = styled.p`
   margin-left: 12px;
 `;
 
+const StyledNavLeft = styled.ul`
+  cursor: pointer;
+`;
+
 const Header = () => {
+  const handleRouteToHomePage = () => {
+    navigate("/");
+  };
+
   return (
     <StyledHeader>
       <nav>
-        <ul>
+        <StyledNavLeft onClick={handleRouteToHomePage}>
           <StaticImage
             height={54}
             width={54}
@@ -33,19 +42,19 @@ const Header = () => {
           <StyledLogoText>
             The Eternal Sacred Order of The Cherubim & Seraphim
           </StyledLogoText>
-        </ul>
+        </StyledNavLeft>
         <ul>
           <li>
             <HeaderLink title="About us" href="/about" />
           </li>
           <li>
-            <HeaderLink title="About us" href="/" />
+            <HeaderLink title="Media" href="/gallery" />
           </li>
           <li>
-            <HeaderLink title="About us" href="/" />
+            <HeaderLink title="Events" href="/events" />
           </li>
           <li>
-            <HeaderLink title="About us" href="/" />
+            <HeaderLink title="Contact Us" href="/contact-us" />
           </li>
           <li id="header-link-special">
             <LeftIconButton
